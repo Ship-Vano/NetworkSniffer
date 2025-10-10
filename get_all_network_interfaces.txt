@@ -1,0 +1,6 @@
+for interface in $(networksetup -listallhardwareports | awk '/^Device:/ {print $2}'); do
+    ip=$(ipconfig getifaddr $interface)
+    if [ -n "$ip" ]; then
+        echo "$interface: $ip"
+    fi
+done
